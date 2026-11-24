@@ -1,0 +1,22 @@
+CARREIRA DE MC — SÓ PELAS RIMAS (GEMINI)
+
+Esta versão usa a API Gemini do Google no servidor Netlify.
+- A pontuação da batalha considera somente a qualidade das rimas.
+- Os atributos não dão vantagem nem pontos.
+- A chave Gemini fica protegida em variável de ambiente, nunca no HTML.
+
+CONFIGURAÇÃO NO NETLIFY
+1. Crie uma chave Gemini no Google AI Studio: https://aistudio.google.com/app/apikey
+2. No Netlify, abra Site configuration / Environment variables.
+3. Adicione GEMINI_API_KEY com o valor da chave criada no Google AI Studio.
+4. (Opcional) Adicione GEMINI_MODEL com valor gemini-3.8-flash.
+5. Remova OPENAI_API_KEY se não for mais usar a OpenAI.
+6. A função tenta novamente em falhas temporárias e usa gemini-3.5-flash-lite como alternativa.
+7. Publique o pacote completo e faça um novo deploy depois de salvar as variáveis.
+
+
+IMPORTANTE
+- O plano gratuito do Gemini tem limites de uso que podem mudar. Se o limite acabar, a IA pode parar temporariamente.
+- No nível gratuito, o Google informa que os dados enviados podem ser usados para melhorar seus produtos. Não envie informações pessoais ou privadas nas batalhas.
+- Não publique apenas index.html: a pasta netlify/functions é necessária.
+- O pacote deve ser enviado como um deploy Netlify que inclua Functions (por exemplo, por repositório Git conectado ou Netlify CLI).

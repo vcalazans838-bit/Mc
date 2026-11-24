@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Carreira de MC</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#15161a;--s:#202127;--s2:#2b2c34;--t:#f4f1e8;--m:#a2a0ae;--a:#ffcf1f;--b:#ff2e7e;--g:#34e0a1;--bd:#3a3b45;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#e9e5d8;--s:#fffdf6;--s2:#ddd8c6;--t:#18181d;--m:#5c5a68;--a:#b88a00;--b:#d3125c;--g:#0a8f5c;--bd:#c4bfab;color-scheme:light}}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--t);font:16px/1.45 Barlow,system-ui,sans-serif;background-image:repeating-linear-gradient(115deg,transparent 0 38px,rgba(255,255,255,.025) 38px 40px)}
+h1,h2,h3{font-family:Anton,Impact,sans-serif;font-weight:400;letter-spacing:.02em;margin:.2em 0}h1{font-size:2.2rem}h2{font-size:1.5rem}
+#top{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--s);border-bottom:3px solid var(--b);position:sticky;top:0;z-index:5;flex-wrap:wrap}
+.logo{font-family:Anton,Impact;font-size:1.4rem;color:var(--a);transform:rotate(-2deg)}
+.chip{background:var(--s2);padding:3px 10px;border-radius:99px;font-weight:600;font-size:.9rem;white-space:nowrap}.chip b{color:var(--a)}
+#nav{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;scrollbar-width:thin}
+#nav button{flex:none;background:var(--s);color:var(--t);border:2px solid var(--bd);padding:7px 12px;font:600 .95rem Barlow,sans-serif;cursor:pointer;border-radius:4px}
+#nav button.on{background:var(--a);color:#111;border-color:var(--a);transform:rotate(-1.5deg)}
+#app{max-width:920px;margin:0 auto;padding:10px 12px 40px}
+.card{background:var(--s);border:2px solid var(--bd);border-radius:6px;padding:14px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}.grid .card{margin:0}
+.btn{background:var(--a);color:#111;border:0;padding:10px 16px;font:700 1rem Barlow,sans-serif;border-radius:4px;cursor:pointer;box-shadow:3px 3px 0 var(--b)}
+.btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}.btn.sec{background:var(--s2);color:var(--t);box-shadow:none}
+.btn:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,#nav button:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+label{display:block;margin:8px 0;font-weight:600}input,select,textarea{width:100%;background:var(--bg);color:var(--t);border:2px solid var(--bd);border-radius:4px;padding:9px;font:inherit;margin-top:3px}textarea{min-height:130px;resize:vertical}
+.bar{height:10px;background:var(--bg);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--b),var(--a))}
+.row{display:flex;justify-content:space-between;gap:8px;align-items:center}.mut{color:var(--m);font-size:.9rem}.ok{color:var(--g)}.no{color:var(--b)}
+.tag{display:inline-block;background:var(--b);color:#fff;padding:1px 8px;border-radius:3px;font-size:.8rem;font-weight:600}
+.av{width:72px;height:72px;border-radius:50%;background:var(--s2);border:3px solid var(--a);display:grid;place-items:center;font-size:2.2rem;overflow:hidden;flex:none}.av img{width:100%;height:100%;object-fit:cover}
+.score{display:flex;gap:12px;align-items:center;justify-content:center;font-family:Anton,Impact;font-size:2.4rem;margin-top:6px}.score small{font:600 .8rem Barlow;color:var(--m)}
+.bub{background:var(--s2);border-left:5px solid var(--b);padding:12px;margin:8px 0;white-space:pre-line;animation:pop .45s ease-out}.bub.me{border-color:var(--a)}
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;animation:pop .6s ease-out}.vs .x{font:2.2rem Anton,Impact;color:var(--b)}
+.res{text-align:center;font:2.6rem Anton,Impact;animation:pop .5s ease-out}.res.w{color:var(--g)}.res.l{color:var(--b)}
+.paper{background:#f6f0dc;color:#262320;padding:12px 14px 12px 34px;border-radius:2px;font:1rem/1.7rem "Permanent Marker",cursive;background-image:repeating-linear-gradient(transparent 0 26px,#a9c4e0 26px 27px);border-left:3px solid #e0566b;box-shadow:3px 4px 8px rgba(0,0,0,.35);transform:rotate(-1deg);position:relative}
+.paper small{display:block;font:600 .7rem Barlow;color:#7a7468}
+.tro{text-align:center}.tro .ic{font-size:3rem;height:84px;display:grid;place-items:center}.tro svg{height:84px;width:auto}.lock{filter:grayscale(1);opacity:.4}
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;z-index:20;padding:12px}#modal>div{background:var(--s);border:3px solid var(--a);border-radius:6px;padding:16px;max-width:560px;width:100%;max-height:88vh;overflow:auto}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--a);color:#111;padding:10px 18px;font-weight:700;border-radius:4px;display:none;z-index:30;animation:pop .4s}
+@keyframes pop{from{opacity:0;transform:scale(.92) translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+.it{touch-action:none;user-select:none;cursor:grab;display:inline-block;margin:3px}.it.pl{position:absolute;margin:0;transform:translate(-50%,-50%)}.it svg{width:100%;height:100%}
+.it.t{width:58px;height:58px}.it.t.pl{width:15%;height:auto;aspect-ratio:1}.it.t .ic{width:100%;height:100%;display:grid;place-items:center;font-size:34px}.it.t.pl .ic{font-size:clamp(18px,6vw,40px)}
+.it.f{width:84px;padding:6px 6px 6px 14px;font:.6rem/1.2 "Permanent Marker",cursive;background-image:none;transform:rotate(-2deg)}.it.f.pl{width:22%;font-size:.5rem;transform:translate(-50%,-50%) rotate(-3deg)}
+#cena{position:relative;aspect-ratio:1/1;max-width:620px;margin:10px auto;border:3px solid var(--bd);border-radius:6px;overflow:hidden;background:repeating-linear-gradient(0deg,transparent 0 30px,rgba(255,255,255,.04) 30px 32px),linear-gradient(#34304a,#211f2e)}
+#estante{position:absolute;left:3%;top:5%;width:60%;height:90%;border:6px solid #5a3b22;background:rgba(0,0,0,.4)}#estante i{position:absolute;left:-6px;right:-6px;height:9px;background:#7a5230;box-shadow:0 4px 0 rgba(0,0,0,.4)}
+#quadro{position:absolute;right:3%;top:12%;width:31%;height:56%;background:#a4794a;border:6px solid #3d2b19;border-radius:3px;text-align:center}#quadro span{font:.7rem Anton,Impact;color:#3d2b19}
+.invg{display:flex;flex-wrap:wrap;gap:4px;max-height:200px;overflow:auto;padding:4px 0}
+.it.fb{width:150px;padding:0;background:none;transform:none;box-shadow:2px 3px 6px rgba(0,0,0,.4)}.it.fb.pl{width:34%;transform:translate(-50%,-50%) rotate(-2deg)}.it.fb svg{height:auto;display:block}
+</style></head><body>
+<div id="authGate" style="position:fixed;inset:0;z-index:100;background:#15161a;color:#f4f1e8;display:grid;place-items:center;padding:18px;overflow:auto">
+ <div style="width:min(100%,440px);background:#202127;border:2px solid #3a3b45;border-radius:8px;padding:20px">
+  <div style="font:1.8rem Anton,Impact;color:#ffcf1f;text-align:center">CARREIRA DE MC</div>
+  <h2 id="authTitle" style="text-align:center">Entrar na sua conta</h2>
+  <p style="color:#a2a0ae;text-align:center">Entre ou crie uma conta para acessar sua carreira.</p>
+  <form id="authLogin">
+   <label>E-mail<input id="authEmail" type="email" autocomplete="email" required></label>
+   <label>Senha<input id="authPassword" type="password" autocomplete="current-password" minlength="6" required></label>
+   <button class="btn" type="submit" style="width:100%;margin-top:10px">Entrar</button>
+  </form>
+  <form id="authSignup" hidden>
+   <label>E-mail<input id="newEmail" type="email" autocomplete="email" required></label>
+   <label>Senha<input id="newPassword" type="password" autocomplete="new-password" minlength="6" required></label>
+   <button class="btn" type="submit" style="width:100%;margin-top:10px">Criar conta</button>
+  </form>
+  <button id="authToggle" type="button" class="btn sec" style="width:100%;margin-top:10px">Ainda não tenho conta · Cadastrar</button>
+  <p id="authMessage" role="status" style="color:#ffcf1f;min-height:1.4em"></p>
+ </div>
+</div>
+<button id="authLogout" class="btn sec" style="position:fixed;right:10px;bottom:10px;z-index:40;display:none">Sair da conta</button>
+<div id="top"><span class="logo">CARREIRA DE MC</span><span id="hd" style="display:flex;gap:6px;flex-wrap:wrap"></span></div>
+<div id="nav"></div><div id="app"></div><div id="modal"></div><div id="toast"></div>
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+const sb = createClient(
+ 'https://zcuhiirxteqxuildukvk.supabase.co',
+ 'sb_publishable_PLPRvWF9SCdb3C2qG_0Tvg_V6ZbsGZ4'
+);
+window.mcSupabase = sb;
+const gate=document.getElementById('authGate');
+const login=document.getElementById('authLogin');
+const signup=document.getElementById('authSignup');
+const toggle=document.getElementById('authToggle');
+const title=document.getElementById('authTitle');
+const msg=document.getElementById('authMessage');
+const logout=document.getElementById('authLogout');
+let creating=false;
+function say(t){msg.textContent=t;}
+function mode(create){creating=create;login.hidden=create;signup.hidden=!create;title.textContent=create?'Criar sua conta':'Entrar na sua conta';toggle.textContent=create?'Já tenho conta · Entrar':'Ainda não tenho conta · Cadastrar';say('');}
+toggle.addEventListener('click',()=>mode(!creating));
+login.addEventListener('submit',async e=>{e.preventDefault();say('Entrando...');const {error}=await sb.auth.signInWithPassword({email:document.getElementById('authEmail').value.trim(),password:document.getElementById('authPassword').value});if(error)say(error.message);});
+signup.addEventListener('submit',async e=>{e.preventDefault();say('Criando conta...');const {data,error}=await sb.auth.signUp({email:document.getElementById('newEmail').value.trim(),password:document.getElementById('newPassword').value});if(error){say(error.message);return;}say(data.session?'Conta criada! Acessando...':'Conta criada! Confira seu e-mail para confirmar e depois entre.');});
+logout.addEventListener('click',async()=>{const {error}=await sb.auth.signOut();if(error)say(error.message);});
+sb.auth.onAuthStateChange((_event,session)=>{const ok=!!session;gate.style.display=ok?'none':'grid';logout.style.display=ok?'block':'none';if(ok){say('');mode(false);}});
+const {data:{session}}=await sb.auth.getSession();
+if(session){gate.style.display='none';logout.style.display='block';}else{gate.style.display='grid';}
+</script>
+<script>
+const $=s=>document.querySelector(s),K="carreiraMC_v1",clamp=(v,a=0,b=100)=>Math.max(a,Math.min(b,v)),R=n=>"R$ "+Math.round(n).toLocaleString("pt-BR"),rnd=a=>a[Math.floor(Math.random()*a.length)],avg=a=>a.reduce((x,y)=>x+y,0)/a.length,norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+const day=T=>{const d=new Date(2027,0,1);d.setDate(d.getDate()+T-1);return d.toLocaleDateString("pt-BR",{day:"2-digit",month:"short",year:"numeric"})};
+const ATTR=[["cri","Criatividade"],["met","Métrica"],["imp","Improviso"],["pun","Punchline"],["pal","Presença de palco"],["res","Resposta"]];
+const STY={"Técnico":"met","Punchline":"pun","Improviso":"imp","Resposta":"res","Palco":"pal"};
+const UF="AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO".split(" ");
+const CI={cwb:{n:"Curitiba – PR",p:200},rj:{n:"Rio de Janeiro – RJ",p:180},bsb:{n:"Brasília – DF",p:260},ssa:{n:"Salvador – BA",p:320},rec:{n:"Recife – PE",p:350},bh:{n:"Belo Horizonte – MG",p:190}};
+const FL={qbda:"Classificado na Seletiva da BDA",qfms:"Classificado na Seletiva da FMS",qinter:"Vitória na FMS",qest:"Vitória no Duelo Estadual",qnac:"Vitória na Interestadual"};
+const E=[
+{id:"praca",n:"Batalha da Praça",t:"Rua",c:"home",fmt:"solo",du:3,br:8,ro:2,tm:90,ch:280,req:{},fee:0,pr:60,rp:6,L:1,rep:1,desc:"Roda aberta na praça do seu bairro. Sem inscrição e sem palco: 8 MCs, o microfone e o público. Quem leva a batalha ganha a folhinha.",rule:"Chave de 8 MCs: quartas, semi e final (3 duelos de 2 rounds). Só o campeão leva a folhinha."},
+{id:"bairro",n:"Batalha do Bairro",t:"Rua",c:"home",fmt:"solo",du:4,br:16,ro:3,tm:80,ch:320,req:{w:2},fee:10,pr:180,rp:10,L:1,rep:1,desc:"Batalha local com 16 MCs, organizada pela cena da sua cidade. Oitavas, quartas, semi e final.",rule:"Chave de 16 MCs: oitavas, quartas, semi e final (4 duelos de 3 rounds). Inscrição de R$ 10. Só o campeão leva a folhinha."},
+{id:"sel1",n:"Seletiva Regional da BDA",t:"Seletiva",c:"cwb",fmt:"solo",du:2,ro:3,tm:75,ch:340,req:{rep:18,w:3},fee:30,pr:400,rp:12,L:2,d:30,g:"qbda",ti:"📜",desc:"Seletiva regional que dá vaga nas edições da Batalha da Aldeia. Evento e data fictícios, inspirados na cena.",rule:"Regra adaptada do jogo: 2 duelos de 3 rounds. Quem vence a final garante a classificação."},
+{id:"bda",n:"Batalha da Aldeia (BDA)",t:"Regional",c:"rj",fmt:"trio",du:3,ro:3,tm:70,ch:340,req:{rep:25,f:"qbda"},fee:40,pr:900,rp:18,L:3,d:75,ti:"",desc:"Edição da BDA inspirada na batalha real. Cidade, data e regras são fictícias e adaptadas.",rule:"Regra adaptada: a BDA é de TRIOS. Mata-mata de 3 duelos de 3 rounds; em cada duelo, parceiro 1, você e parceiro 2. Exige classificação na seletiva."},
+{id:"bdaaniv",n:"BDA de Aniversário · 1 ano",t:"Regional",c:"rj",fmt:"trio",du:2,ro:3,tm:70,ch:340,req:{rep:35,w:6,f:"qbda"},fee:60,pr:1500,rp:20,L:3,d:110,ti:"BDA1",desc:"Competição de TRIOS: você forma um trio com dois MCs e enfrenta outros trios. Dados fictícios, inspirados na cena.",rule:"Regra adaptada: semifinal e final entre trios. Em cada duelo, 3 rounds: parceiro 1, você, parceiro 2. Você escreve só a sua rima; o trio vence pelo conjunto."},
+{id:"bdaaniv8",n:"BDA de Aniversário · 8 anos",t:"Regional",c:"bsb",fmt:"trio",du:3,ro:3,tm:65,ch:360,req:{rep:45,f:"qbda"},fee:70,pr:1200,rp:15,L:3,d:150,ti:"BDA8",desc:"Edição de aniversário de 8 anos da BDA, disputada em trios. Evento fictício.",rule:"Regra adaptada: edição em TRIOS. 3 duelos de 3 rounds; em cada duelo, parceiro 1, você e parceiro 2."},
+{id:"bdaaniv9",n:"BDA de Aniversário · 9 anos",t:"Regional",c:"rj",fmt:"trio",du:3,ro:3,tm:65,ch:360,req:{rep:52,w:12,f:"qbda"},fee:80,pr:1800,rp:18,L:4,d:170,ti:"BDA9",desc:"Edição de aniversário de 9 anos da BDA, disputada em trios. Evento fictício.",rule:"Regra adaptada: edição em TRIOS. 3 duelos de 3 rounds; em cada duelo, parceiro 1, você e parceiro 2."},
+{id:"aldeiacup",n:"Aldeia Cup",t:"Regional",c:"cwb",fmt:"solo",du:3,ro:3,tm:65,ch:360,req:{rep:40,w:9,f:"qbda"},fee:60,pr:1000,rp:15,L:3,d:130,ti:"CUP",desc:"Copa da Aldeia, um torneio com troféu próprio. Evento fictício, inspirado na cena.",rule:"Regra adaptada do jogo: 3 duelos de 3 rounds, 1x1."},
+{id:"bdaaniv10",n:"BDA de Aniversário · 10 anos",t:"Regional",c:"bh",fmt:"trio",du:3,ro:3,tm:65,ch:360,req:{rep:58,w:14,f:"qbda"},fee:90,pr:2200,rp:20,L:4,d:210,ti:"BDA10",desc:"Edição de aniversário de 10 anos da BDA, disputada em trios. Evento fictício.",rule:"Regra adaptada: edição em TRIOS. 3 duelos de 3 rounds; em cada duelo, parceiro 1, você e parceiro 2."},
+{id:"sel2",n:"Seletiva da FMS",t:"Seletiva",c:"ssa",fmt:"solo",du:3,ro:3,tm:65,ch:360,req:{rep:50,w:10},fee:50,pr:800,rp:12,L:4,d:190,g:"qfms",ti:"📜",desc:"Seletiva para a vaga na FMS. Evento e data fictícios.",rule:"Regra adaptada: 3 duelos de 3 rounds. Vencer a final garante a vaga."},
+{id:"fms",n:"FMS (formato adaptado)",t:"Nacional",c:"rec",fmt:"solo",du:4,ro:3,tm:60,ch:360,req:{rep:60,f:"qfms"},fee:80,pr:3000,rp:25,L:4,d:240,g:"qinter",ti:"FMS",desc:"Campeonato inspirado na FMS. Não segue o regulamento oficial: é um formato do jogo.",rule:"Regra adaptada: 4 duelos de 3 rounds, tempo reduzido (60 s)."},
+{id:"estadual",n:"Duelo de MCs Estadual",t:"Estadual",c:"home",fmt:"solo",du:4,ro:3,tm:60,ch:360,req:{rep:66,w:15,f:"qinter"},fee:100,pr:2500,rp:25,L:4,d:265,g:"qest",ti:"EST",desc:"Etapa estadual do Duelo de MCs, na sua cidade. O campeão segue para a Interestadual. Evento fictício.",rule:"Regra adaptada: 4 duelos de 3 rounds. Vencer a final garante a vaga."},
+{id:"inter",n:"Interestadual",t:"Nacional",c:"bsb",fmt:"solo",du:4,ro:3,tm:60,ch:360,req:{rep:75,w:18,f:"qest"},fee:100,pr:5000,rp:30,L:5,d:290,g:"qnac",ti:"🥇",desc:"Os campeões estaduais se enfrentam. Evento fictício, caminho para o Duelo Nacional.",rule:"Regra adaptada: 4 duelos de 3 rounds contra os melhores do país."},
+{id:"duelo",n:"Duelo de MCs Nacional",t:"Nacional",c:"bh",fmt:"solo",du:5,ro:3,tm:60,ch:380,req:{rep:88,w:25,f:"qnac"},fee:150,pr:50000,rp:40,L:5,d:340,ti:"VIADUTO",desc:"A final nacional, em Belo Horizonte. Premiação de referência do jogo: R$ 50.000. Datas e regras fictícias.",rule:"Regra adaptada: 5 duelos de 3 rounds. O campeão leva o troféu do Viaduto."}];
+const OPP=[["Zé Verso","Osasco – SP","Técnico","Frio e calculista",[38,60,30,35,32,35],5],["Dona Rima","Belém – PA","Punchline","Provocadora, ri do adversário",[45,35,40,62,50,40],8],["Sombra","Recife – PE","Improviso","Imprevisível e rápido",[50,42,64,45,40,48],10],["Bia Flow","Porto Alegre – RS","Resposta","Devolve cada linha na hora",[44,48,50,45,42,66],14],["Kadu 7","Goiânia – GO","Palco","Entra gritando, domina a roda",[48,45,48,50,70,50],16],["Lírica Preta","Salvador – BA","Técnico","Poeta de métrica perfeita",[58,70,50,55,52,56],22],["Dr. Punch","Belo Horizonte – MG","Punchline","Humor ácido, não perdoa",[62,55,58,76,60,58],27],["Vento Sul","Curitiba – PR","Improviso","Calmo, cria do nada",[66,60,78,62,60,64],31],["Cássia MC","Brasília – DF","Resposta","Estuda o rival antes do duelo",[68,64,66,64,64,82],38],["Rei do Viaduto","Belo Horizonte – MG","Palco","Dono da plateia",[72,66,70,70,86,70],44],["Voz do Sertão","Fortaleza – CE","Técnico","Veterano de rima cirúrgica",[80,86,72,76,74,78],52],["Fenômeno","Rio de Janeiro – RJ","Improviso","Campeão que ninguém decifra",[88,82,90,86,84,88],61]].map(a=>({n:a[0],c:a[1],s:a[2],p:a[3],at:a[4],w:a[5],avg:avg(a[4])}));
+const PART=[["Kiko Cadência","Santos – SP","Técnico","Metódico e leal",[48,62,44,46,44,48]],["Mana Verso","Campinas – SP","Punchline","Debochada, faz a plateia rir",[52,46,50,64,56,50]],["Zeca Improv","Niterói – RJ","Improviso","Solto, nunca repete rima",[55,48,66,52,50,52]],["Tati Resposta","Vitória – ES","Resposta","Atenta, rebate tudo",[50,52,54,50,48,66]],["Gordo do Palco","São Gonçalo – RJ","Palco","Barulhento e carismático",[46,44,48,54,70,48]],["Léo Metralha","Guarulhos – SP","Técnico","Rápido, disparador de sílabas",[54,66,50,56,48,54]]].map(a=>({n:a[0],c:a[1],s:a[2],p:a[3],at:a[4],avg:avg(a[4])}));
+const mkX=(n,c,s,p,b)=>{const at=[0,1,2,3,4,5].map(()=>b+Math.floor(Math.random()*8));at[ATTR.findIndex(a=>a[0]==STY[s])]+=12;return{n,c,s,p,at,w:2,avg:avg(at)}};
+const EXTRA=[["Pê do Beco","Santo André – SP","Punchline","Zoeiro de esquina",26],["Nina Rima","Contagem – MG","Técnico","Caderninho na mão",30],["Tuca 021","Duque de Caxias – RJ","Palco","Chega gritando",28],["Mc Faísca","Fortaleza – CE","Improviso","Rápido, mas erra a métrica",32],["Baixinho SP","Diadema – SP","Resposta","Pequeno e teimoso",27],["Lua Verso","Olinda – PE","Técnico","Calma e precisa",34],["Dudu Flow","Goiânia – GO","Punchline","Tenta fazer graça",29],["Neguinho da Vila","Salvador – BA","Palco","Povo da vila canta junto",31],["Rafa Rima","Curitiba – PR","Improviso","Solta o que vier",33],["Cacá MC","Brasília – DF","Resposta","Rebate com raiva",30]].map(a=>mkX(...a));
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]);
+const BANK={"Técnico":["{t}, tua métrica é torta, meu verso é no compasso\nTu tropeça na rima, eu acerto cada passo","Sílaba por sílaba eu monto o meu legado\n{t} chegou fora do tempo e já saiu errado"],"Punchline":["{t}, tu é tão sem graça que o microfone bocejou\nChegou pra bater de frente e o público já levantou","Falou que era brabo, mas o flow nem apareceu\nSó vi o nome de {t} e o resto se perdeu"],"Improviso":["Olha o que eu vejo aqui, {t} suando na hora\nEu invento no ato, tu só pensa e demora","Sem papel, sem caderno, o verso nasce na hora\n{t} treinou em casa e esqueceu tudo agora"],"Resposta":["Tu falou do meu estilo? {t}, vem que eu respondo\nCada linha tua eu pego e devolvo no fundo","Ouvi cada palavra, {t}, e vou te dizer\nTua rima de ontem não aguenta o que vem"],"Palco":["Sou {n} de {c}, a roda inteira é minha\nO povo grita meu nome, {t}, tu fica na linha","Microfone na mão e o palco pegando fogo\n{t} perdeu a voz, eu só comecei o jogo"]};
+const ACH=[["a1","Primeira vitória","Vença um duelo.",()=>G.w>=1],["a2","Dez vitórias","Vença 10 duelos.",()=>G.w>=10],["a3","Pé na estrada","Faça sua primeira viagem de ônibus.",()=>G.trav>=1],["a4","Classificado","Garanta vaga na BDA.",()=>G.flags.qbda],["a5","Dono do trio","Vença a BDA de Aniversário.",()=>G.tr.some(x=>x.e.startsWith("bdaaniv"))],["a6","Bolso cheio","Acumule R$ 5.000 em prêmios.",()=>G.earned>=5000],["a8","Folhinha na mão","Vença uma batalha de rua e ganhe a folhinha.",()=>G.fol.length>=1],["a7","Campeão Nacional","Vença o Duelo de MCs Nacional.",()=>G.tr.some(x=>x.e=="duelo")]];
+const LV=[[0,"Iniciante de roda"],[20,"Revelação"],[40,"Destaque"],[60,"Veterano"],[85,"Lenda da cena"]];
+const BRIDGE=`<svg viewBox="0 0 160 120"><polygon points="10,72 150,72 156,86 4,86" fill="#a7aaae"/><rect x="4" y="86" width="152" height="24" fill="#7b7e82"/><path d="M14 90l8 9-4 8M100 89l-4 10M128 90l6 11-4 8M146 89l4 9M40 92l4 8" stroke="#575a5e" stroke-width=".8" fill="none"/><path d="M20 80Q40 74 56 84" stroke="#46484c" stroke-width="5" fill="none"/><path d="M108 84Q130 78 146 82" stroke="#4a4c50" stroke-width="4" fill="none"/><circle cx="62" cy="98" r="10" fill="#3b3d41" stroke="#d3d5d8" stroke-width="1.5"/><text x="62" y="96" text-anchor="middle" font-family="Anton,Impact" font-size="3.4" fill="#e8eaec">DUELO DE MCs</text><text x="62" y="102" text-anchor="middle" font-family="Anton,Impact" font-size="5.2" fill="#e8eaec">NACIONAL</text><rect x="20" y="58" width="10" height="26" fill="#6c7075"/><rect x="32" y="62" width="6" height="20" fill="#868b8f"/><rect x="23" y="68" width="5" height="7" fill="#3a3a3a"/><circle cx="25.5" cy="71.5" r="1.4" fill="#e0a050"/><rect x="132" y="54" width="7" height="32" fill="#70747a"/><ellipse cx="135.5" cy="66" rx="3.2" ry="4" fill="#1d1d20"/><polygon points="10,62 66,60 66,65 12,68" fill="#9b9ea2"/><polygon points="84,58 150,54 152,59 86,63" fill="#9b9ea2"/><path d="M12 65L66 62.5M86 60.5L151 56.5" stroke="#e5c235" stroke-width="1.2"/><path d="M8 62l3-3 3 3 3-3 3 3M146 54l3-3 3 3 3-3" stroke="#c0c3c7" stroke-width=".8" fill="none"/><path d="M22 60Q40 22 74 30M86 30Q130 24 138 56" fill="none" stroke="#c0c3c7" stroke-width="4"/><path d="M28 60Q44 30 72 34M88 34Q124 30 134 56" fill="none" stroke="#9ea1a5" stroke-width="1.2"/>${[[22,60,40,22,74,30,62],[86,30,130,24,138,56,57]].map(a=>[1,2,3,4,5].map(i=>{const t=i/6,u=1-t,x=u*u*a[0]+2*u*t*a[2]+t*t*a[4],y=u*u*a[1]+2*u*t*a[3]+t*t*a[5];return `<path d="M${x.toFixed(1)} ${y.toFixed(1)}V${a[6]}" stroke="#a3a6aa"/>`}).join("")).join("")}<path d="M58 86l5-5 5 3 6-4 6 4 6-3 6 5z" fill="#707377"/><rect x="66" y="52" width="18" height="34" fill="#8a8d91"/><rect x="70" y="36" width="10" height="18" fill="#9a9da1"/><rect x="66" y="26" width="18" height="14" rx="4" fill="#adb0b4"/><path d="M70 26v6M74 26v6M78 26v6M82 26v6" stroke="#6f7276" stroke-width=".8"/><path d="M80 30L98 15" stroke="#6f7276" stroke-width="4" stroke-linecap="round"/><ellipse cx="101" cy="12" rx="5.5" ry="7" fill="#c4c7cb" stroke="#6f7276" transform="rotate(40 101 12)"/><path d="M98 9l6 6M96 12l6 6" stroke="#7d8084" stroke-width=".7"/><path d="M72 30Q50 18 34 40Q30 52 42 50M80 32Q110 22 126 42Q122 62 128 80" stroke="#1c1d20" stroke-width="1.1" fill="none"/><rect x="126" y="80" width="3.5" height="6" fill="#1c1d20"/><circle cx="16" cy="78" r="2.4" fill="#b8bbbe"/><circle cx="48" cy="76" r="2.4" fill="#b8bbbe"/><circle cx="100" cy="76" r="2.4" fill="#b8bbbe"/><circle cx="116" cy="80" r="2.4" fill="#b8bbbe"/><circle cx="142" cy="82" r="2.4" fill="#b8bbbe"/></svg>`;const BRIDGE_3=`<svg viewBox="0 0 160 110"><polygon points="10,64 152,64 156,78 4,78" fill="#a9acb0"/><rect x="4" y="78" width="152" height="24" fill="#7d8084"/><path d="M18 83l8 9-4 8M70 80l-4 10M118 82l6 11-4 8M140 80l4 9" stroke="#575a5e" stroke-width=".8" fill="none"/><path d="M22 72Q44 66 52 77" stroke="#4a4c50" stroke-width="4" fill="none"/><circle cx="80" cy="91" r="10" fill="#3b3d41" stroke="#d3d5d8" stroke-width="1.5"/><text x="80" y="89" text-anchor="middle" font-family="Anton,Impact" font-size="3.6" fill="#e8eaec">DUELO DE MCs</text><text x="80" y="95" text-anchor="middle" font-family="Anton,Impact" font-size="5.2" fill="#e8eaec">NACIONAL</text><rect x="22" y="58" width="8" height="19" fill="#6d7175"/><rect x="32" y="60" width="5" height="16" fill="#868b8f"/><rect x="134" y="50" width="6" height="26" fill="#6f7379"/><circle cx="137" cy="62" r="2" fill="#b4b7bb"/><polygon points="12,58 148,47 150,52 14,64" fill="#9b9ea2"/><path d="M14 61L148 50" stroke="#e5c235" stroke-width="1.3"/><path d="M22 58Q76 -6 140 50" fill="none" stroke="#c0c3c7" stroke-width="4"/><path d="M28 58Q76 4 134 50" fill="none" stroke="#9ea1a5" stroke-width="1.2"/>${[1,2,3,4,5,6,7,8,9].map(i=>{const t=i/10,u=1-t,x=u*u*22+2*u*t*76+t*t*140,y=u*u*58+2*u*t*-6+t*t*50,d=58-(x-12)*.081;return `<path d="M${x.toFixed(1)} ${y.toFixed(1)}V${d.toFixed(1)}" stroke="#a3a6aa" stroke-width="1"/>`}).join("")}<path d="M62 78l4-3 5 2 6-3 6 3 6-2 5 3z" fill="#74777b"/><rect x="73" y="50" width="14" height="28" fill="#8e9195"/><rect x="75" y="34" width="10" height="18" fill="#9a9da1"/><rect x="70" y="24" width="20" height="14" rx="4" fill="#adb0b4"/><path d="M74 24v6M78 24v6M82 24v6M86 24v6" stroke="#6f7276" stroke-width=".8"/><path d="M84 28L100 14" stroke="#7a7d81" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="102" cy="12" rx="5" ry="6" fill="#c9ccd0" stroke="#6f7276" transform="rotate(40 102 12)"/><path d="M90 30Q120 36 128 70" stroke="#2a2b2e" stroke-width="1" fill="none"/><rect x="127" y="70" width="3" height="6" fill="#2a2b2e"/><circle cx="46" cy="72" r="2" fill="#b8bbbe"/><circle cx="100" cy="72" r="2" fill="#b8bbbe"/><circle cx="124" cy="70" r="2" fill="#b8bbbe"/></svg>`;const BRIDGE_2=`<svg viewBox="0 0 140 96"><polygon points="10,70 122,70 132,64 20,64" fill="#b9b9b9"/><polygon points="122,70 132,64 132,82 122,88" fill="#6d6d6d"/><rect x="10" y="70" width="112" height="18" fill="#8d8d8d"/><polygon points="16,63 122,63 128,57 22,57" fill="#a3a3a3"/><path d="M24 58Q72 -6 118 58" fill="none" stroke="#d6d6d6" stroke-width="3.5"/><path d="M31 58Q72 8 111 58" fill="none" stroke="#b4b4b4" stroke-width="1.5"/>${[1,2,3,4,5,6,7,8,9].map(i=>{const t=i/10,u=1-t,x=u*u*24+2*u*t*72+t*t*118,y=u*u*58+2*u*t*-6+t*t*58;return `<path d="M${x.toFixed(1)} ${y.toFixed(1)}V58" stroke="#c4c4c4" stroke-width="1"/>`}).join("")}<rect x="68" y="20" width="8" height="38" fill="#dcdcdc"/><rect x="70" y="15" width="4" height="7" fill="#9a9a9a"/><circle cx="72" cy="11" r="5.5" fill="#c2c2c2" stroke="#8a8a8a"/></svg>`;const BRIDGE_OLD=`<svg viewBox="0 0 120 78"><rect x="4" y="12" width="112" height="9" fill="var(--a)"/><path d="M4 12h112M4 16h112" stroke="#111" stroke-width=".8"/><rect x="4" y="21" width="112" height="41" fill="var(--a)"/>${[10,36,62,88].map(x=>`<path d="M${x} 62v-15a10 10 0 0 1 20 0v15z" fill="var(--s)"/>`).join("")}<rect x="0" y="62" width="120" height="8" fill="var(--a)"/><rect x="20" y="70" width="80" height="6" fill="var(--b)"/></svg>`;
+const TIS={FMS:`<svg viewBox="0 0 100 120">
+<ellipse cx="50" cy="109" rx="29" ry="6" fill="#0d0d10"/>
+<path d="M42 91L45 68H55L58 91Z" fill="#9da4ad" stroke="#555b65" stroke-width="1.5"/>
+<path d="M45 72H55M44 78H56M43 84H57" stroke="#e5e8ec" stroke-width="2"/>
+<path d="M29 91H71L77 103Q50 111 23 103Z" fill="#8e969f" stroke="#454b54" stroke-width="2"/>
+<path d="M30 94H70L73 101Q50 106 27 101Z" fill="#c7cbd0"/>
+<path d="M35 103H65L69 109H31Z" fill="#555c66" stroke="#242830" stroke-width="1.5"/>
+<path d="M21 25C8 19 8 43 27 49M79 25C92 19 92 43 73 49" fill="none" stroke="#252a31" stroke-width="7" stroke-linecap="round"/>
+<path d="M21 25C8 19 8 43 27 49M79 25C92 19 92 43 73 49" fill="none" stroke="#9ca4ae" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M23 17Q50 11 77 17L70 58Q66 69 50 73Q34 69 30 58Z" fill="#171a20" stroke="#aeb5be" stroke-width="2.5"/>
+<path d="M27 20Q50 15 73 20L68 54Q64 64 50 67Q36 64 32 54Z" fill="#292e37"/>
+<path d="M34 23Q50 20 66 23L62 48Q59 57 50 59Q41 57 38 48Z" fill="#111419"/>
+<path d="M31 22L35 51Q38 62 47 66" fill="none" stroke="#68717d" stroke-width="2"/>
+<path d="M69 22L65 51Q62 62 53 66" fill="none" stroke="#05070a" stroke-width="2"/>
+<path d="M25 19Q50 12 75 19" fill="none" stroke="#e2e5e9" stroke-width="2.5"/>
+<path d="M24 20Q17 31 15 52L8 78Q20 70 27 58L30 32Z" fill="#f1c928" stroke="#8a7111" stroke-width="1.5"/>
+<path d="M76 20Q83 31 85 52L92 78Q80 70 73 58L70 32Z" fill="#f1c928" stroke="#8a7111" stroke-width="1.5"/>
+<path d="M29 24Q21 43 23 69L19 91Q31 81 34 61L35 29Z" fill="#229b50" stroke="#126331" stroke-width="1.5"/>
+<path d="M71 24Q79 43 77 69L81 91Q69 81 66 61L65 29Z" fill="#229b50" stroke="#126331" stroke-width="1.5"/>
+<path d="M25 25L17 68M75 25L83 68" stroke="#ffe77a" stroke-width="1.8" opacity=".85"/>
+<path d="M39 74H61L64 80H36Z" fill="#c3c8cf" stroke="#555b65" stroke-width="1.5"/>
+<path d="M38 80H62L65 86H35Z" fill="#737b86" stroke="#454b54" stroke-width="1.5"/>
+<path d="M42 83H58" stroke="#e5e8ec" stroke-width="1.5"/>
+</svg>`,VIADUTO:BRIDGE,BDA1:`<svg viewBox="0 0 100 96"><path d="M24 22C6 20 8 50 28 52M76 22C94 20 92 50 72 52" fill="none" stroke="#d9dde6" stroke-width="5"/><path d="M24 10H76L70 62H30Z" fill="#1b2a4a" stroke="#d9dde6" stroke-width="3"/><circle cx="50" cy="32" r="11" fill="none" stroke="#d9dde6" stroke-width="2"/><path d="M50 24l2.6 6h6l-5 3.8 2 6-5.6-3.8-5.6 3.8 2-6-5-3.8h6z" fill="#d9dde6"/><rect x="42" y="62" width="16" height="8" fill="#9aa3b8"/><rect x="30" y="70" width="40" height="8" fill="#1b2a4a" stroke="#d9dde6" stroke-width="2"/></svg>`,BDA8:`<svg viewBox="0 0 100 100"><path d="M6 36L30 30L20 46ZM94 36L70 30L80 46Z" fill="#d9ad3c"/><path d="M26 8H74V62H26Z" fill="#14120d" stroke="#d9ad3c" stroke-width="3"/><circle cx="50" cy="30" r="13" fill="#14120d" stroke="#e8e2cf" stroke-width="2"/><text x="50" y="37" text-anchor="middle" font-family="Anton,Impact" font-size="20" fill="#e8e2cf">8</text><path d="M32 62H68L72 76H28Z" fill="#d9ad3c"/><rect x="26" y="76" width="48" height="8" fill="#14120d" stroke="#d9ad3c" stroke-width="2"/></svg>`,BDA9:`<svg viewBox="0 0 100 100"><path d="M24 40L34 70H66L76 40L66 44V62H34V44Z" fill="#8a8f98"/><circle cx="50" cy="32" r="24" fill="#1d3fc4"/><path d="M46 32a4 4 0 1 1 8 0a8 8 0 1 1-16 0a12 12 0 1 1 24 0a16 16 0 1 1-32 0" fill="none" stroke="#9fb4ff" stroke-width="2.5"/><circle cx="50" cy="32" r="3" fill="#cfe0ff"/><rect x="22" y="70" width="56" height="14" fill="#15161a" stroke="#666" stroke-width="2"/><path d="M50 73l5 2v5l-5 2-5-2v-5z" fill="none" stroke="#aaa" stroke-width="1.5"/></svg>`,CUP:`<svg viewBox="0 0 100 120"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#3fbf9a"/><stop offset=".35" stop-color="#c8c97a"/><stop offset=".62" stop-color="#e0508f"/><stop offset="1" stop-color="#f08a3a"/></linearGradient><pattern id="cp" width="4" height="4" patternUnits="userSpaceOnUse"><rect y="3" width="4" height="1" fill="#000" opacity=".3"/></pattern><pattern id="cd" width="2.4" height="2.4" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r=".6" fill="#6f6759"/></pattern></defs><ellipse cx="50" cy="106" rx="34" ry="8" fill="#101013"/><ellipse cx="50" cy="100" rx="31" ry="7" fill="#1c1c20" stroke="#34343a"/><path d="M24 20C38 24 42 40 42 62C42 80 30 92 20 100H80C70 92 58 80 58 62C58 40 62 24 76 20Z" fill="url(#cg)"/><path d="M24 20C38 24 42 40 42 62C42 80 30 92 20 100H80C70 92 58 80 58 62C58 40 62 24 76 20Z" fill="url(#cp)"/><ellipse cx="50" cy="20" rx="27" ry="6" fill="#f0b04a"/><ellipse cx="50" cy="20" rx="20" ry="4" fill="#7a4d18"/><circle cx="50" cy="17" r="8" fill="#cfc8b6"/><circle cx="50" cy="17" r="8" fill="url(#cd)"/></svg>`,BDA10:`<svg viewBox="0 0 100 120"><ellipse cx="50" cy="106" rx="34" ry="8" fill="#0d0d10"/><ellipse cx="50" cy="100" rx="34" ry="8" fill="#1b1b1f" stroke="#3a3a40"/><g fill="none" stroke-linecap="round"><path d="M44 98C30 72 62 58 46 30M56 98C70 72 38 58 54 30M50 98C50 70 36 60 38 34M50 98C50 72 64 60 62 34" stroke="#b4682f" stroke-width="4.5"/><path d="M44 98C30 72 62 58 46 30M56 98C70 72 38 58 54 30M50 98C50 70 36 60 38 34M50 98C50 72 64 60 62 34" stroke="#e8a463" stroke-width="1.4"/></g><path d="M50 32C42 20 50 10 50 4C56 12 60 22 50 32Z" fill="#d9772f"/><path d="M46 30C38 24 38 14 44 10C48 18 48 24 46 30ZM54 30C62 24 62 14 56 10C52 18 52 24 54 30Z" fill="#2f9e63"/><path d="M38 34C30 30 28 22 32 17C38 22 40 28 38 34ZM62 34C70 30 72 22 68 17C62 22 60 28 62 34Z" fill="#2f9e63"/></svg>`,EST:`<svg viewBox="0 0 100 110"><circle cx="50" cy="40" r="35" fill="#26262a"/><circle cx="50" cy="40" r="33" fill="none" stroke="#d8d2bc" stroke-width="1.6" stroke-dasharray="1.5 2"/><circle cx="50" cy="40" r="29" fill="#cfc9b6" stroke="#8c8570"/><path d="M41 19l2-6 3 3 4-6 4 6 3-3 2 6z" fill="#b89a3e" stroke="#6d5a1c" stroke-width=".5"/><text x="50" y="38" text-anchor="middle" font-family="Anton,Impact" font-size="15" fill="#1b1b1e">CPB</text><text x="50" y="54" text-anchor="middle" font-family="Anton,Impact" font-size="15" fill="#1b1b1e">MC</text><rect x="39" y="57" width="22" height="6" rx="1.5" fill="#26262a"/><text x="50" y="61.6" text-anchor="middle" font-family="Anton,Impact" font-size="3.6" fill="#ddd">NACIONAL</text><path d="M43 75h14l-2 10h-10z" fill="#b9a15a"/><ellipse cx="50" cy="75" rx="10" ry="3" fill="#d7c27a" stroke="#7a6a30" stroke-dasharray="1 1.2"/><polygon points="14,86 86,86 92,98 8,98" fill="#17171a" stroke="#cfcfcf" stroke-dasharray="1.4 1.6"/><rect x="8" y="98" width="84" height="8" fill="#0f0f12" stroke="#cfcfcf" stroke-dasharray="1.4 1.6"/><rect x="22" y="90" width="34" height="3.5" rx="1.7" fill="#b9b6a8"/><circle cx="21" cy="91.7" r="3" fill="#c9c6b8"/></svg>`},tic=e=>TIS[e.ti]||e.ti;
+let G=null,B=null,tm=0;
+try{G=JSON.parse(localStorage.getItem(K))}catch(e){}
+const fresh=()=>({mc:null,money:120,earned:0,rep:0,w:0,l:0,n:0,T:1,at:"home",flags:{},hist:[],tr:[],fol:[],ach:{},trio:[],trav:0,tab:"inicio"});
+if(!G)G=fresh();(()=>{G.pl=G.pl||{};G.fol=G.fol||[];const mp=(arr,keep,pre)=>{const m={};let j=0;arr.forEach((x,i)=>{if(keep(x))m[i]=j++});const pl={};Object.keys(G.pl).forEach(k=>{if(k[0]==pre){const n=m[+k.slice(1)];if(n!==undefined)pl[pre+n]=G.pl[k]}else pl[k]=G.pl[k]});G.pl=pl;return arr.filter(keep)};G.tr=mp(G.tr||[],x=>E.some(e=>e.id==x.e&&e.ti),"t");G.fol=mp(G.fol,f=>f.br,"f")})();
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(G))}catch(e){}};
+const cityName=k=>k=="home"?G.mc.city+" – "+G.mc.uf:CI[k].n;
+const season=()=>Math.floor((G.T-1)/365),edate=e=>e.d+365*season(),EV=id=>E.find(e=>e.id==id);
+const cost=(a,b)=>a==b?0:a=="home"?CI[b].p:b=="home"?CI[a].p:Math.round((CI[a].p+CI[b].p)*.55);
+const level=()=>LV.filter(l=>G.rep>=l[0]).pop()[1];
+const av=m=>`<div class="av">${m.img?`<img src="${m.img}" alt="">`:m.av}</div>`;
+function toast(t){const o=$("#toast");o.textContent=t;o.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(()=>o.style.display="none",2600)}
+function modal(h){const m=$("#modal");if(!h){m.style.display="none";return}m.innerHTML="<div>"+h+"</div>";m.style.display="flex"}
+function chk(){ACH.forEach(a=>{if(!G.ach[a[0]]&&a[3]()){G.ach[a[0]]=day(G.T);toast("🏅 Conquista: "+a[1])}})}
+function go(t){G.tab=t;B=null;save();render()}
+function render(){clearInterval(tm);$("#top").style.display=G.mc?"flex":"none";if(!G.mc){$("#nav").innerHTML="";return create()}
+ $("#hd").innerHTML=`<span class="chip">💰 <b>${R(G.money)}</b></span><span class="chip">📍 ${cityName(G.at)}</span><span class="chip">📅 ${day(G.T)}</span>`;
+ if(B){$("#nav").innerHTML="";return drawB()}
+ $("#nav").innerHTML=[["inicio","Início"],["meu","Meu MC"],["bat","Batalhas"],["sel","Seletivas"],["cal","Calendário"],["via","Viagens"],["car","Minha carreira"],["gal","Galeria"],["his","Histórico"],["arm","Meu armário"]].map(x=>`<button class="${G.tab==x[0]?"on":""}" onclick="go('${x[0]}')">${x[1]}</button>`).join("");
+ $("#app").innerHTML=({inicio:vIni,meu:vMeu,bat:()=>vList("Batalhas",e=>e.t!="Seletiva"),sel:()=>vList("Seletivas",e=>e.t=="Seletiva"),cal:vCal,via:vVia,car:vCar,gal:vGal,his:vHis,arm:vArm})[G.tab]()}
+function create(){let o=Object.keys(STY).map(s=>`<option>${s}</option>`).join("");
+ $("#app").innerHTML=`<div class="card"><h1>Crie seu MC</h1><p class="mut">Você é o MC. Comece na praça e abra caminho até o Duelo de MCs Nacional.</p>
+<label>Nome artístico<input id="fn" maxlength="24"></label><label>Cidade de origem<input id="fc" maxlength="30"></label>
+<label>Estado<select id="fu">${UF.map(u=>`<option>${u}</option>`).join("")}</select></label><label>Estilo de rima<select id="fs">${o}</select></label>
+<label>Biografia<textarea id="fb" maxlength="200" style="min-height:70px"></textarea></label>
+<label>Avatar<select id="fa">${["🎤","😎","🧢","🔥","👑","🦅","🎧"].map(x=>`<option>${x}</option>`).join("")}</select></label>
+<label>Ou use uma foto<input id="ff" type="file" accept="image/*"></label><p id="er" class="no"></p><button class="btn" onclick="mkMC()">Começar carreira</button></div>`}
+function mkMC(){const g=i=>$("#"+i).value.trim(),f=$("#ff").files[0],fin=img=>{const at={cri:30,met:30,imp:30,pun:30,pal:30,res:30};at[STY[g("fs")]]+=12;G.mc={name:g("fn"),city:g("fc"),uf:g("fu"),style:g("fs"),bio:g("fb")||"Sem biografia ainda.",av:g("fa"),img,at};G.tab="inicio";save();render();toast("Bem-vindo à cena, "+G.mc.name+"!")};
+ if(!g("fn")||!g("fc"))return $("#er").textContent="Preencha o nome artístico e a cidade.";
+ if(f){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=c.height=96;c.getContext("2d").drawImage(im,0,0,96,96);fin(c.toDataURL("image/jpeg",.7))};im.src=r.result};r.readAsDataURL(f)}else fin(null)}
+const bars=at=>ATTR.map(a=>`<div class="mut">${a[1]} · ${Math.round(at[a[0]])}</div><div class="bar"><i style="width:${at[a[0]]}%"></i></div>`).join("");
+function status(e){const o=reqs(e);return o.every(x=>x[1])}
+function reqs(e){const r=e.req,o=[];if(r.rep)o.push([`Reputação ${r.rep}+ (você: ${Math.floor(G.rep)})`,G.rep>=r.rep]);if(r.w)o.push([`${r.w}+ vitórias (você: ${G.w})`,G.w>=r.w]);if(r.f)o.push([FL[r.f],!!G.flags[r.f]]);o.push([`Estar em ${cityName(e.c)}${G.at==e.c?"":" (compre passagem em Viagens)"}`,G.at==e.c]);if(!e.rep)o.push([`Inscrição até ${day(edate(e)-3)}`,G.T<=edate(e)-3]);if(e.fee)o.push([`Taxa de inscrição ${R(e.fee)}`,G.money>=e.fee]);return o}
+function evCard(e){const ok=status(e);return `<div class="card"><span class="tag">${e.t}</span>${e.fmt=="trio"?' <span class="tag">TRIO</span>':""}<h3>${e.n}</h3><div class="mut">${cityName(e.c)} · ${e.rep?"toda semana":day(edate(e))}</div><div>Prêmio: <b>${R(e.pr)}</b> · ${e.fmt=="trio"?"3x3":e.br?e.br+" MCs":"1x1"}</div><div class="${ok?"ok":"no"}">${ok?"Pronto para entrar":"Requisitos pendentes"}</div><p><button class="btn" onclick="showEv('${e.id}')">Ver detalhes</button></p></div>`}
+function vList(t,f){return `<h2>${t}</h2><p class="mut">Eventos inspirados na cena. Datas, cidades e regras são fictícias ou adaptadas do jogo.</p><div class="grid">${E.filter(f).map(evCard).join("")}</div>`}
+function vIni(){const nx=E.filter(e=>!e.rep&&G.T<=edate(e)).sort((a,b)=>edate(a)-edate(b)).slice(0,3);
+ return `<div class="card"><div class="row" style="justify-content:flex-start;gap:14px">${av(G.mc)}<div><h1>${G.mc.name}</h1><div class="mut">${G.mc.city} – ${G.mc.uf} · ${level()}</div></div></div></div>
+<div class="card"><h3>Próximos eventos</h3>${nx.map(e=>`<div class="row"><span>${e.n}<br><small class="mut">${day(edate(e))} · ${cityName(e.c)}</small></span><button class="btn sec" onclick="showEv('${e.id}')">Detalhes</button></div>`).join("<hr style='border-color:var(--bd)'>")}</div>
+<div class="card"><h3>Aviso</h3><p class="mut">As batalhas são decididas somente pela qualidade das duas rimas, avaliadas pelos mesmos critérios. Atributos do MC não dão pontos nem vantagem.</p><button class="btn sec" onclick="resetAsk()">Reiniciar carreira</button></div>`}
+function resetAsk(){modal(`<h2>Reiniciar carreira?</h2><p>Todo o progresso salvo (MC, dinheiro, troféus, histórico) será apagado.</p><button class="btn" onclick="resetGo()">Apagar tudo</button> <button class="btn sec" onclick="modal()">Cancelar</button>`)}
+function resetGo(){G=fresh();save();modal();render()}
+function vMeu(){const m=G.mc,t=G.tr.slice(-4).reverse();return `<div class="card"><div class="row" style="justify-content:flex-start;gap:14px">${av(m)}<div><h2>${m.name}</h2><div class="mut">${m.city} – ${m.uf} · Estilo ${m.style}</div></div></div><p>${m.bio}</p>
+<div class="grid"><div><span class="chip">Reputação <b>${Math.floor(G.rep)}</b></span> <span class="chip">${level()}</span></div><div class="mut">Vitórias ${G.w} · Derrotas ${G.l} · Batalhas ${G.n}</div><div class="mut">Prêmios acumulados: ${R(G.earned)}</div></div></div>
+<div class="card"><h3>Principais títulos</h3>${t.length?t.map(x=>`<div>${EV(x.e).n} · <span class="mut">${x.d}</span></div>`).join(""):'<p class="mut">Nenhum título ainda. Vença finais para colecionar.</p>'}</div>`}
+function vCal(){const l=E.filter(e=>!e.rep).sort((a,b)=>a.d-b.d);return `<h2>Calendário da temporada ${season()+1}</h2><p class="mut">Calendário fictício do jogo, não é o oficial dos eventos reais. Hoje: ${day(G.T)}.</p>${l.map(e=>{const d=edate(e),cl=G.T>d-3;return `<div class="card row"><div><span class="tag">${e.t}</span> <b>${e.n}</b><br><span class="mut">${day(d)} · ${cityName(e.c)} · inscrição até ${day(d-3)}</span><br><span class="${cl?"no":"ok"}">${cl?"Inscrições encerradas":status(e)?"Disponível":"Requisitos pendentes"}</span></div><button class="btn sec" onclick="showEv('${e.id}')">Ver</button></div>`}).join("")}<p class="mut">Praça e Bairro acontecem toda semana. Depois de dezembro, uma nova temporada recomeça o calendário.</p>`}
+function vVia(){const ks=["home",...Object.keys(CI)];return `<h2>Viagens</h2><p class="mut">Ônibus. Você está em <b>${cityName(G.at)}</b> e tem <b>${R(G.money)}</b>. Cada viagem leva 1 dia.</p><div class="grid">${ks.map(k=>{const c=cost(G.at,k),here=G.at==k;return `<div class="card"><h3>${cityName(k)}</h3><div>Passagem: <b>${here?"—":R(c)}</b></div><p><button class="btn" ${here||G.money<c?"disabled":""} onclick="travel('${k}')">${here?"Você está aqui":G.money<c?"Saldo insuficiente":"Comprar passagem"}</button></p></div>`}).join("")}</div>`}
+function travel(k){const c=cost(G.at,k);if(G.money<c)return toast("Saldo insuficiente.");G.money-=c;G.at=k;G.T++;G.trav++;chk();save();render();toast("Viagem feita para "+cityName(k)+".")}
+function vCar(){const nx=LV.find(l=>l[0]>G.rep),p=nx?(G.rep-LV.filter(l=>G.rep>=l[0]).pop()[0])/(nx[0]-LV.filter(l=>G.rep>=l[0]).pop()[0])*100:100;
+ return `<h2>Minha carreira</h2><div class="card"><h3>${level()}</h3><div class="bar"><i style="width:${p}%"></i></div><p class="mut">${nx?`Próximo nível: ${nx[1]} com reputação ${nx[0]}`:"Nível máximo."} Reputação atual ${Math.floor(G.rep)}.</p></div><div class="card"><h3>Caminho até o Nacional</h3>${E.map(e=>{const w=G.tr.some(x=>x.e==e.id),u=status(e)||w;return `<div class="row"><span>${w?"✅":u?"🔓":"🔒"} ${e.n}</span><span class="mut">${e.req.rep?"rep "+e.req.rep:""} ${e.req.w?"· "+e.req.w+" vit.":""}</span></div>`}).join("")}</div>`}
+function vGal(){const c=Object.keys(G.ach).length;return `<h2>Galeria de conquistas</h2><div class="grid">${E.filter(e=>e.ti).map(e=>{const x=G.tr.filter(t=>t.e==e.id),l=x[x.length-1];return `<div class="card tro ${l?"":"lock"}"><div class="ic">${tic(e)}</div><h3>${({VIADUTO:"Troféu do Viaduto",BDA1:"Troféu BDA de Aniversário 1 ano",BDA8:"Troféu BDA de Aniversário 8 anos",BDA9:"Troféu BDA de Aniversário 9 anos",BDA10:"Troféu BDA de Aniversário 10 anos",CUP:"Troféu Aldeia Cup",EST:"Troféu Estadual (CPB MC)",FMS:"Troféu da final (FMS adaptada)"})[e.ti]||"Troféu · "+e.n}</h3><div class="mut">${e.n}</div><div>${l?"Conquistado em "+l.d+(x.length>1?" (x"+x.length+")":""):"Bloqueado"}</div><small class="mut">${e.ti=="VIADUTO"?"Ponte em arco, punho com microfone e base de concreto com o emblema do Duelo. Desenho próprio inspirado no troféu real, não é reprodução oficial.":"Vença a final de "+e.n+"."+(e.ti=="FMS"?" Taça escura com alças metálicas e fitas verdes e amarelas, em desenho vetorial do jogo.":TIS[e.ti]?" Desenho próprio, inspirado no troféu real.":"")}</small></div>`}).join("")}</div>
+<h3>Medalhas (${c}/${ACH.length})</h3><div class="grid">${ACH.map(a=>`<div class="card ${G.ach[a[0]]?"":"lock"}"><b>🏅 ${a[1]}</b><div class="mut">${a[2]}</div><small>${G.ach[a[0]]||"Bloqueada"}</small></div>`).join("")}</div>
+<h3>Folhinhas</h3>${G.fol.length?`<div style="display:grid;gap:10px">${G.fol.map((f,i)=>`<div class="card" style="cursor:pointer;padding:8px" onclick="openFolha(${i})">${folhaSVG(f)}<div class="mut" style="text-align:center">Toque para ampliar</div></div>`).reverse().join("")}</div>`:'<p class="mut">Só quem vence a batalha de rua leva a folhinha com a chave completa. Vença a Praça ou o Bairro.</p>'}`}
+function vHis(){return `<h2>Histórico</h2>${G.hist.length?G.hist.slice().reverse().map(h=>`<div class="card row"><div><b>${h.e}</b><br><span class="mut">${h.d} · vs ${h.o}</span></div><div><span class="${h.r=="V"?"ok":"no"}"><b>${h.r=="V"?"Vitória":"Derrota"}</b></span> ${h.s}</div></div>`).join(""):'<p class="mut">Nenhuma batalha disputada ainda.</p>'}`}
+function showEv(id){const e=EV(id),r=reqs(e),ok=r.every(x=>x[1]);let tr="";
+ if(e.fmt=="trio")tr=`<h3>Escolha 2 parceiros</h3>${PART.map((p,i)=>`<label style="font-weight:400"><input type="checkbox" class="pt" value="${i}" ${G.trio.includes(i)?"checked":""} style="width:auto"> <b>${p.n}</b> (${p.s}, ${p.c}) <span class="mut">· ${p.p} · nível ${Math.round(p.avg)}</span></label>`).join("")}`;
+ modal(`<h2>${e.n}</h2><p>${e.desc}</p><p class="mut">${cityName(e.c)} · ${e.rep?"toda semana":day(edate(e))} · Prêmio ${R(e.pr)}</p><p><b>Formato:</b> ${e.rule}<br><b>Tempo:</b> ${e.tm}s por rima · até ${e.ch} caracteres</p><h3>Requisitos</h3>${r.map(x=>`<div class="${x[1]?"ok":"no"}">${x[1]?"✔":"✘"} ${x[0]}</div>`).join("")}${tr}<p><button class="btn" ${ok?"":"disabled"} onclick="enter('${e.id}')">Inscrever e entrar</button> <button class="btn sec" onclick="modal()">Fechar</button></p>`)}
+function enter(id){const e=EV(id);if(!status(e))return;let mates=[];
+ if(e.fmt=="trio"){const c=[...document.querySelectorAll(".pt:checked")].map(x=>+x.value);if(c.length!=2)return toast("Escolha exatamente 2 parceiros.");G.trio=c;mates=c.map(i=>PART[i])}
+ G.money-=e.fee;modal();B={e,duel:0,mates,tr:e.fmt=="trio",gain:{},br:e.br?mkBr(e):null};newDuel();save();render()}
+function pickOpp(e,k){const s=OPP.slice().sort((a,b)=>a.avg-b.avg);return s[clamp(Math.floor((e.L-1)*1.9+k*1.1+Math.random()*1.5),0,11)]}
+function newDuel(){const e=B.e;B.pm=B.po=B.sm=B.so=B.rd=0;B.subs=[];B.st="intro";if(B.br)brStep();else if(B.tr){B.ot=[0,1,2].map(i=>pickOpp(e,B.duel+i*.4));B.o=B.ot[0]}else B.o=pickOpp(e,B.duel)}
+const rhyme=(s,t)=>rnd(BANK[s.s]).replace(/{t}/g,t).replace(/{n}/g,s.n).replace(/{c}/g,s.c.split(" –")[0]);
+const me=()=>({n:G.mc.name,c:G.mc.city,s:G.mc.style});
+async function askRapAI(payload){
+ const auth=window.mcSupabase&&await window.mcSupabase.auth.getSession();
+ const token=auth&&auth.data&&auth.data.session&&auth.data.session.access_token;
+ if(!token)throw new Error("Faça login novamente para usar a IA.");
+ const r=await fetch("/.netlify/functions/batalha",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+token},body:JSON.stringify(payload)});
+ const data=await r.json().catch(()=>({}));
+ if(!r.ok)throw new Error(data.error||"Não foi possível falar com a IA.");
+ return data;
+}
+async function setupRound(){const current=B,e=B.e;let who="me",om=B.o;if(B.tr){om=B.ot[B.rd];who=B.rd==1?"me":"m"+(B.rd==0?0:1)}
+ B.who=who;B.om=om;B.st="loading";render();
+ try{const a=await askRapAI({mode:"opponent",mcName:G.mc.name,mcStyle:G.mc.style,mcCity:G.mc.city,opponentName:om.n,opponentStyle:om.s,opponentCity:om.c});B.otx=a.text}
+ catch(err){B.otx=rhyme(om,G.mc.name);toast("IA indisponível; usando resposta reserva. "+err.message)}
+ if(B!==current)return;
+ B.st=who=="me"?"round":"mate";if(who!="me"){B.sp=B.mates[+who[1]];B.mtx=rhyme(B.sp,om.n)}B.left=e.tm;render()}
+function drawB(){const e=B.e,tr=B.tr,on=tr?"TRIO ADVERSÁRIO":B.o.n;let h=`<div class="card"><b>${e.n}</b> <span class="mut">· ${tr?"Trios":"1x1"} · ${B.br?phase():"Duelo "+(B.duel+1)+"/"+e.du}${B.st=="intro"||B.st=="end"?"":" · Round "+(B.rd+1)+"/"+e.ro}</span><div class="score"><span>${B.pm||0}</span><small>${tr?"SEU TRIO":"VOCÊ"}</small><span style="color:var(--b)">x</span><small>${on}</small><span>${B.po||0}</span></div></div>`;
+ const mc=c=>`<div class="card" style="margin:0"><b>${c.n}</b><div class="mut">${c.c}<br>${c.s} · ${c.p||""}</div></div>`,mine=`<div class="card" style="margin:0"><div class="row" style="justify-content:flex-start;gap:10px">${av(G.mc)}<div><b>${G.mc.name}</b><div class="mut">${G.mc.style}</div></div></div></div>`;
+ if(B.st=="loading")h+=`<div class="card"><h3>O adversário está rimando...</h3><p class="mut">A inteligência artificial está preparando o verso.</p></div>`;
+ else if(B.st=="evaluating")h+=`<div class="card"><h3>Avaliando sua rima...</h3><p class="mut">A IA está comparando as duas rimas pelos mesmos critérios. Atributos não dão pontos.</p></div>`;
+ else if(B.st=="intro")h+=brPrev()+`<div class="vs"><div>${mine}${tr?B.mates.map(mc).join(""):""}</div><div class="x">VS</div><div>${tr?B.ot.map(mc).join(""):mc(B.o)}</div></div><p style="text-align:center"><button class="btn" onclick="setupRound()">Subir no palco</button></p>`;
+ else if(B.st=="round")h+=`<div class="card"><span class="mut">${B.om.n} manda:</span><div class="bub">${B.otx}</div><label>Sua resposta (${B.who=="me"&&tr?"sua vez no trio":"escreva suas rimas, uma linha por verso"})<textarea id="tx" maxlength="${e.ch}" placeholder="Escreva aqui..."></textarea></label><div class="row"><span class="chip">⏱ <b id="tm">${B.left}</b>s</span><button class="btn" onclick="sendR()">Enviar rima</button></div></div>`;
+ else if(B.st=="mate")h+=`<div class="card"><span class="mut">${B.om.n} manda:</span><div class="bub">${B.otx}</div><span class="mut">${B.sp.n} (seu parceiro) responde:</span><div class="bub me">${B.mtx}</div><button class="btn" onclick="resMate()">Ver resultado do round</button></div>`;
+ else if(B.st=="res"){const x=B.last;h+=`<div class="card"><div class="res ${x.win?"w":"l"}">${x.win?"ROUND SEU":"ROUND DELE"}</div><div class="score"><span>${Math.round(x.m)}</span><small>pontos</small><span style="color:var(--b)">x</span><span>${Math.round(x.o)}</span></div>${x.sub?`<h3>Avaliação da rima</h3><p class="mut">Análise por IA, considerando o contexto do duelo.</p>${Object.entries(x.sub).map(s=>`<div class="mut">${s[0]} · ${Math.round(s[1])}</div><div class="bar"><i style="width:${s[1]}%"></i></div>`).join("")}<p>${x.notes}</p>`:`<p class="mut">${x.who}</p>`}<button class="btn" onclick="nextR()">${B.rd+1<e.ro?"Próximo round":"Ver resultado do duelo"}</button></div>`}
+ else if(B.st=="dend"){const w=B.dw;h+=`<div class="card"><div class="res ${w?"w":"l"}">${w?"VITÓRIA":"DERROTA"}</div><div class="score"><span>${B.pm}</span><small>x</small><span>${B.po}</span></div><p style="text-align:center">${w&&B.duel<e.du-1?"Você avança para o próximo duelo.":w?"Você venceu a final!":"Você foi eliminado."}</p><p style="text-align:center"><button class="btn" onclick="afterDuel()">${w&&B.duel<e.du-1?"Próximo duelo":"Concluir"}</button></p></div>`}
+ else if(B.st=="end")h+=B.sum;
+ $("#app").innerHTML=h;if(B.st=="round"){const t=$("#tx");t&&t.focus();clearInterval(tm);tm=setInterval(()=>{B.left--;const o=$("#tm");o&&(o.textContent=Math.max(0,B.left));if(B.left<=0){clearInterval(tm);sendR()}},1000)}}
+function evalR(t,o,opn){const sub={Criatividade:0,Coerência:0,Resposta:0,Punchline:0,Métrica:0,Repetição:0},L=t.split(/\n|\//).map(x=>x.trim()).filter(Boolean),W=norm(t).match(/[a-z]+/g)||[];
+ if(W.length<4)return{tot:3,sub,notes:"Texto curto demais para avaliar. Escreva pelo menos algumas linhas."};
+ const sy=L.map(l=>(norm(l).match(/[aeiou]+/g)||[]).length),av=avg(sy),dev=avg(sy.map(x=>Math.abs(x-av))),end=L.map(l=>(norm(l).match(/[a-z]+/g)||[""]).pop().slice(-3));let rh=0;end.forEach((e,i)=>{if(e.length>1&&end.some((f,j)=>j!=i&&f==e))rh++});
+ const u=new Set(W).size/W.length,ow=new Set(norm(o).match(/[a-z]{4,}/g)||[]),hit=W.filter(w=>w.length>3&&ow.has(w)).length,named=norm(t).includes(norm(opn.split(" ")[0])),lg=W.filter(w=>w.length>6).length/W.length,dup=L.length-new Set(L.map(norm)).size,cmp=(norm(t).match(/\b(igual|parece|como|nem|ate|cade|so|vale)\b/g)||[]).length;
+ sub.Métrica=clamp((100-dev*9-(L.length<2?30:0))*.5+(L.length?rh/L.length*100:0)*.5);sub.Repetição=clamp((u-.45)*200);sub.Criatividade=clamp(lg*250+u*40+Math.min(W.length,50)*.5);sub.Coerência=clamp(Math.min(L.length,4)*18+Math.min(W.length,40)*.9-dup*30);sub.Resposta=clamp(hit*18+(named?35:0));sub.Punchline=clamp(cmp*18+(/[!?]/.test(t)?15:0)+(sy[sy.length-1]<av?20:0));
+ const tot=sub.Criatividade*.2+sub.Coerência*.15+sub.Resposta*.2+sub.Punchline*.2+sub.Métrica*.15+sub.Repetição*.1,wk=Object.entries(sub).sort((a,b)=>a[1]-b[1])[0][0],tip={Criatividade:"use palavras e imagens menos óbvias",Coerência:"escreva mais linhas ligadas entre si",Resposta:"cite o adversário e retome palavras dele",Punchline:"feche com uma comparação ou frase de efeito",Métrica:"iguale o tamanho dos versos e rime os finais",Repetição:"evite repetir as mesmas palavras"};
+ return{tot,sub,notes:"Ponto fraco: "+wk+". Dica: "+tip[wk]+"."}}
+function scoreTotal(x){
+ const sub=x.scores||x.sub||{};
+ const fallback=Object.values(sub).length?Object.values(sub).reduce((a,v)=>a+clamp(Number(v)||0),0)/Object.values(sub).length:0;
+ return clamp(Number.isFinite(Number(x.total??x.tot))?Number(x.total??x.tot):fallback);
+}
+async function sendR(){
+ if(!B||B.st!=="round")return;
+ const current=B;clearInterval(tm);const t=( $("#tx")||{value:""}).value;
+ if(!t.trim())return toast("Escreva sua rima antes de enviar.");
+ B.st="evaluating";render();
+ let mine,opponent;
+ try {
+  [mine,opponent]=await Promise.all([
+   askRapAI({mode:"evaluate",verse:t,opponentLine:B.otx,opponentName:B.om.n,mcName:G.mc.name,mcStyle:G.mc.style}),
+   askRapAI({mode:"evaluate",verse:B.otx,opponentLine:t,opponentName:G.mc.name,mcName:B.om.n,mcStyle:B.om.s||"livre"})
+  ]);
+ } catch(err) {
+  mine=evalR(t,B.otx,B.om.n);opponent=evalR(B.otx,t,G.mc.name);
+  toast("Não foi possível avaliar com IA. Os dois versos foram avaliados pelo mesmo sistema reserva. "+err.message);
+ }
+ if(B!==current)return;
+ const sub=mine.scores||mine.sub||evalR(t,B.otx,B.om.n).sub;
+ const m=scoreTotal(mine),o=scoreTotal(opponent);
+ B.subs.push(sub);
+ fin(m,o,{sub,notes:mine.notes||"Avaliação da rima, sem bônus por atributos."});
+}
+async function resMate(){
+ const current=B;B.st="evaluating";render();let mine,opponent;
+ try {
+  [mine,opponent]=await Promise.all([
+   askRapAI({mode:"evaluate",verse:B.mtx,opponentLine:B.otx,opponentName:B.om.n,mcName:B.sp.n,mcStyle:B.sp.s||"livre"}),
+   askRapAI({mode:"evaluate",verse:B.otx,opponentLine:B.mtx,opponentName:B.sp.n,mcName:B.om.n,mcStyle:B.om.s||"livre"})
+  ]);
+ } catch(err) { mine=evalR(B.mtx,B.otx,B.om.n);opponent=evalR(B.otx,B.mtx,B.sp.n); }
+ if(B!==current)return;
+ fin(scoreTotal(mine),scoreTotal(opponent),{who:"O round foi decidido somente pela qualidade das rimas."});
+}
+function fin(m,o,x){B.sm+=m;B.so+=o;const w=m>=o;w?B.pm++:B.po++;B.last={m,o,win:w,...x};B.st="res";render()}
+function nextR(){B.rd++;B.rd<B.e.ro?setupRound():endDuel()}
+function endDuel(){const w=B.pm>B.po||(B.pm==B.po&&B.sm>=B.so),e=B.e;B.dw=w;G.n++;w?G.w++:G.l++;G.T++;
+ const on=B.tr?"Trio de "+B.ot[0].n:B.o.n,d=day(G.T);G.hist.push({e:e.n,d,o:on,r:w?"V":"D",s:B.pm+"x"+B.po});chk();save();B.st="dend";render()}
+function afterDuel(){const e=B.e;if(B.dw&&B.duel<e.du-1){B.duel++;newDuel();return render()}
+ const won=B.dw,k=B.duel;let pr=won?e.pr:Math.round(e.pr*.12*k),rp=won?e.rp:Math.round(e.rp*.3*(k/Math.max(1,e.du-1))),tro="";
+ G.money+=pr;G.earned+=pr;G.rep=Math.min(100,G.rep+rp);
+ if(won){if(e.g)G.flags[e.g]=1;if(e.ti){G.tr.push({e:e.id,d:day(G.T)});tro=`<div class="tro"><div class="ic">${tic(e)}</div><b>Nova conquista na galeria!</b>${e.g?`<div class="ok">${FL[e.g]}</div>`:""}</div>`}}
+ let fo="";if(won&&B.br){G.fol.push({mc:G.mc.name,ev:e.n,d:day(G.T),cty:cityName(e.c),opp:"Chave de "+B.br.r[0].length+" MCs",r:"Campeão",br:{r:B.br.r.map(l=>l.map(x=>x.n))}});fo=`<div class="tro"><b>Você ganhou a folhinha!</b></div><div style="overflow-x:auto"><div style="min-width:640px">${folhaSVG(G.fol[G.fol.length-1])}</div></div>`}
+ chk();B.sum=`<div class="card"><div class="res ${won?"w":"l"}">${won?"CAMPEÃO":"ELIMINADO"}</div><p style="text-align:center">${e.n}</p>${tro}${fo}${B.br&&!won?'<p class="mut" style="text-align:center">Quem perde não leva a folhinha. Volte e tente de novo.</p>':""}<p>Prêmio: <b>${R(pr)}</b> · Reputação +${rp}</p><p><button class="btn" onclick="go('inicio')">Voltar ao menu</button></p></div>`;B.st="end";save();render()}
+
+function phase(){const n=B.br.r[B.duel].length;return n>8?"Oitavas de final":n>4?"Quartas de final":n>2?"Semifinal":"Final"}
+function mkBr(e){const n=e.br,pool=OPP.concat(EXTRA).sort((a,b)=>a.avg-b.avg).slice(0,Math.round(n*1.1));return{r:[shuf(shuf(pool).slice(0,n-1).concat([{me:1,n:G.mc.name,avg:0}]))]}}
+function brStep(){const b=B.br,cur=b.r[B.duel],nx=[];for(let i=0;i<cur.length;i+=2){const a=cur[i],c=cur[i+1];if(a.me||c.me){nx.push({me:1,n:G.mc.name,avg:0});B.o=a.me?c:a}else nx.push(a.avg+Math.random()*40>=c.avg+Math.random()*40?a:c)}b.r[B.duel+1]=nx}
+function brPrev(){if(!B.br)return"";const e=B.e;return `<div class="card"><b>Chave · ${phase()}</b><div style="overflow-x:auto"><div style="min-width:640px">${folhaSVG({ev:e.n,d:day(G.T),mc:G.mc.name,cty:cityName(e.c),br:{r:B.br.r.map(l=>l.map(x=>x.n))}},B.duel)}</div></div></div>`}
+function openFolha(i){modal(`<div style="overflow-x:auto"><div style="min-width:720px">${folhaSVG(G.fol[i])}</div></div><p><button class="btn sec" onclick="modal()">Fechar</button></p>`)}
+function folhaSVG(f,upto){const r=f.br.r,N=r[0].length,R=Math.log2(N),up=upto==null?R:upto,W=N>8?800:640,P=10,CC=150,cw=(W-2*P-CC)/(2*R),rh=N>8?30:38,top=100,half=N/2,H=top+half*rh+30,fs=N>8?12:14,me=f.mc,yy=[];
+ for(let j=0;j<R;j++){yy[j]=[];for(let i=0;i<(half>>j);i++)yy[j][i]=j?(yy[j-1][2*i]+yy[j-1][2*i+1])/2:top+(i+.5)*rh}
+ const yc=yy[R-1][0],cx=W/2;let s=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto;background:#f6f0dc" role="img" aria-label="Chave da ${esc(f.ev)}"><g stroke="#a9c4e0" stroke-width=".8">`;
+ for(let y=24;y<H;y+=26)s+=`<path d="M0 ${y}H${W}"/>`;
+ s+=`</g><g font-family="'Permanent Marker',cursive" fill="#262320"><text x="${cx}" y="46" text-anchor="middle" font-size="32" transform="rotate(-1.5 ${cx} 46)">${esc(f.ev.toUpperCase())}</text></g><path d="M${cx-130} 56q32 -8 65 0t65 0t65 0t65 0" fill="none" stroke="#d3125c" stroke-width="2.5" stroke-linecap="round"/><text x="${cx}" y="76" text-anchor="middle" font-family="Barlow,sans-serif" font-size="13" fill="#5c5a68">${esc(f.cty||"")} · ${esc(f.d)}</text><g fill="none" stroke="#262320" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">`;
+ let tx="";
+ for(const sd of [0,1])for(let j=0;j<R;j++){const cnt=half>>j,x0=sd?W-P-j*cw:P+j*cw,x1=sd?x0-cw:x0+cw,xa=Math.min(x0,x1);
+  for(let i=0;i<cnt;i++){const y=yy[j][i];s+=`<path d="M${x0} ${y}H${x1}"/>`;if(j<R-1&&i%2==0)s+=`<path d="M${x1} ${y}V${yy[j][i+1]}"/>`;
+   const nm=j<=up?r[j][(sd?cnt:0)+i]:"";if(nm){const L=nm.length*fs*.6>cw-8?` textLength="${cw-8}" lengthAdjust="spacingAndGlyphs"`:"";tx+=`<text x="${xa+4}" y="${y-5}" font-size="${fs}"${L} fill="${nm==me?"#d3125c":"#262320"}">${esc(nm)}</text>`}}}
+ s+=`<path d="M${P+R*cw} ${yc}H${W-P-R*cw}"/></g><g font-family="'Permanent Marker',cursive">${tx}`;
+ const ch=up>=R?r[R][0]:"";if(ch){const L=ch.length*17*.6>CC-10?` textLength="${CC-10}" lengthAdjust="spacingAndGlyphs"`:"";s+=`<text x="${cx}" y="${yc-8}" text-anchor="middle" font-size="17"${L} fill="${ch==me?"#d3125c":"#262320"}">${esc(ch)}</text><g transform="translate(${cx} ${yc-48}) scale(1.5)"><path d="M-14 9L-17 -8L-8 0L0 -12L8 0L17 -8L14 9Z" fill="#ffcf1f" stroke="#262320" stroke-width="1.4" stroke-linejoin="round"/><circle cx="-17" cy="-9" r="2" fill="#ffcf1f" stroke="#262320"/><circle cx="0" cy="-13" r="2" fill="#ffcf1f" stroke="#262320"/><circle cx="17" cy="-9" r="2" fill="#ffcf1f" stroke="#262320"/></g>`}
+ return s+"</g></svg>"}
+function vArm(){G.pl=G.pl||{};
+ const tI=(i,pl)=>{const x=G.tr[i],e=EV(x.e),p=G.pl["t"+i];return `<div class="it t${pl?" pl":""}" data-k="t${i}" title="${e.n}" ${pl?`style="left:${p.x}%;top:${p.y}%"`:""}><div class="ic">${tic(e)}</div></div>`},
+ fI=(i,pl)=>{const f=G.fol[i],p=G.pl["f"+i];return `<div class="it f fb${pl?" pl":""}" data-k="f${i}" ${pl?`style="left:${p.x}%;top:${p.y}%"`:""}>${folhaSVG(f)}</div>`},
+ tl=G.tr.map((_,i)=>i),fl=G.fol.map((_,i)=>i),ph=[...tl.filter(i=>G.pl["t"+i]).map(i=>tI(i,1)),...fl.filter(i=>G.pl["f"+i]).map(i=>fI(i,1))].join(""),
+ ti=tl.filter(i=>!G.pl["t"+i]).map(i=>tI(i)).join(""),fi=fl.filter(i=>!G.pl["f"+i]).map(i=>fI(i)).join("");
+ return `<h2>Meu armário</h2><p class="mut">Arraste troféus para a estante (ou qualquer canto) e folhinhas para o quadro. Para guardar de volta, solte no inventário. Toque num item para ver os detalhes.</p><div id="cena"><div id="estante"><i style="top:30%"></i><i style="top:62%"></i><i style="top:94%"></i></div><div id="quadro"><span>QUADRO</span></div>${ph}</div><div id="inv" class="card"><h3>Inventário</h3><div class="mut">Troféus</div><div class="invg">${ti||'<span class="mut">Nenhum troféu fora do armário. Vença finais para ganhar mais.</span>'}</div><div class="mut">Folhinhas</div><div class="invg">${fi||'<span class="mut">Nenhuma folhinha no inventário. Cada duelo gera uma nova.</span>'}</div></div>`}
+function drag(ev){const el=ev.target.closest(".it"),k=el.dataset.k,r=el.getBoundingClientRect(),g=el.cloneNode(true);ev.preventDefault();g.classList.remove("pl");
+ g.style.cssText=`position:fixed;z-index:50;pointer-events:none;margin:0;width:${r.width}px;height:${r.height}px;opacity:.9;transform:translate(-50%,-50%)`;
+ const sx=ev.clientX,sy=ev.clientY;let mv=0;const pos=e=>{g.style.left=e.clientX+"px";g.style.top=e.clientY+"px"},
+ move=e=>{if(!mv&&Math.hypot(e.clientX-sx,e.clientY-sy)>6){mv=1;document.body.appendChild(g)}if(mv)pos(e)},
+ up=e=>{removeEventListener("pointermove",move);removeEventListener("pointerup",up);removeEventListener("pointercancel",up);g.remove();drop(k,e,mv)};
+ addEventListener("pointermove",move);addEventListener("pointerup",up);addEventListener("pointercancel",up)}
+function drop(k,e,mv){const x=e.clientX,y=e.clientY,T=k[0]=="t",o=(T?G.tr:G.fol)[+k.slice(1)];
+ if(!mv)return toast(T?EV(o.e).n+" · "+o.d:o.ev+" · "+o.r+" · "+o.d);
+ const inn=s=>{const r=$(s).getBoundingClientRect();return x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom},c=$("#cena").getBoundingClientRect();
+ if(inn("#inv"))delete G.pl[k];
+ else if(inn("#cena")){if(!T&&!inn("#quadro"))return toast("Folhinhas ficam no quadro.");G.pl[k]={x:clamp((x-c.left)/c.width*100,6,94),y:clamp((y-c.top)/c.height*100,6,94)}}
+ else return;save();render()}
+document.addEventListener("pointerdown",ev=>{if(G.tab=="arm"&&!B&&G.mc&&ev.target.closest&&ev.target.closest(".it"))drag(ev)});
+render();
+</script></body></html>
